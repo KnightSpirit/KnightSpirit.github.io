@@ -1,25 +1,4 @@
-var myblog = angular.module('app', ['ui.router']);
-
-myblog.config(['$stateProvider', '$urlRouterProvider',function ($stateProvider,$urlRouterProvider) {
-	$urlRouterProvider.otherwise('/home');
-
-	$stateProvider
-		.state('home', {
-			url:'/home',
-			templateUrl : 'view/home.html'
-		})
-		.state('solani', {
-			url:'/movie/sorani',
-			templateUrl:'view/movies/sorani.html'
-		})
-		.state('guitartheory', {
-			url:'/guitartool',
-			controller:'ScaleController',
-			templateUrl:'view/guitartool/index.html'
-		})
-}]);
-
-myblog.controller('ScaleController', function ScaleController($scope){
+guitarTool.controller('ScaleController', function ScaleController($scope){
 	$scope.modeDic = {0 : 'C', 1:'C#/Db', 2:'D', 3:'D#/Eb' ,4:'E', 5:'F', 6:'F#/Gb', 7:'G', 8:'G#/Ab' ,9:'A', 10:'A#/Bb', 11 : 'B'}
 	$scope.allScaleNotes = getScaleData();
 	$scope.puzzleScale = getPuzzleScale();

@@ -1,14 +1,4 @@
-<!-- Nav tabs -->
-<ul class="nav nav-tabs tab-title" role="tablist">
-	<li role="presentation" class="active"><a href="#essay" aria-controls="movie" role="tab" data-toggle="tab">Essay</a></li>
-	<li role="presentation"><a href="#movie" aria-controls="movie" role="tab" data-toggle="tab">Movie</a></li>
-	<li role="presentation"><a href="#book" aria-controls="book" role="tab" data-toggle="tab">Book</a></li>
-	<li role="presentation"><a href="#guitar" aria-controls="guitar" role="tab" data-toggle="tab">Guitar</a></li>
-	<li role="presentation"><a href="#guitartheory" aria-controls="guitartheory" role="tab" data-toggle="tab">GuitarTheory</a></li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
+<!-- <div class="tab-content">
 	<div role="tabpanel" class="tab-pane active" id="essay"></div>
 	<div role="tabpanel" class="tab-pane" id="movie">
 		<ul class="list-group">
@@ -21,5 +11,22 @@
 	</div>
 	<div role="tabpanel" class="tab-pane" id="book"></div>
 	<div role="tabpanel" class="tab-pane" id="guitar">...</div>
-	<div role="tabpanel" class="tab-pane" id="guitartheory">...</div>
-</div>
+	<div role="tabpanel" class="tab-pane" id="guitartheory" ng-controller="ScaleController">
+		<table border="1px solid">
+			<tr>
+				<td ng-repeat="scale in frets">{{scale}}</td>
+			</tr>
+			<tr ng-repeat="ps in puzzleScale">
+				<td ng-repeat="puzzle in ps track by $index" ng-class="puzzle == 1 ? 'puzzle' : ''" >{{puzzle == 1 ? "?" : ""}}</td>
+			</tr> 
+		</table>
+		<table border="1px solid">
+			<tr>
+				<td ng-repeat="scale in frets">{{scale}}</td>
+			</tr>
+			<tr ng-repeat="lineScale in allScaleNotes">
+				<td ng-repeat="scale in lineScale track by $index">{{scale }}</td>
+			</tr>
+		</table>	
+	</div>
+</div> -->

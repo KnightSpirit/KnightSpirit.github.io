@@ -31,11 +31,6 @@
 			font-family: rs;
 			font-size:35px
 		}
-		body{
-			background-image:url('image/bgp.jpg');
-			background-repeat:no-repeat;
-			background-size: cover;
-		}
 		.mainpanel {
 			min-height: 500px;
 			/*background-color: rgba(255, 255, 255, 0.2);	*/
@@ -45,6 +40,16 @@
 			display: inline-block;
 			float: right;
 		}
+		td {
+			width: 90px;
+			height: 20px;
+		}
+		td:first-child{
+			width: 50px
+		}
+		.puzzle {
+			background-color: red
+		}
 	</style>
 
 </head>
@@ -52,11 +57,20 @@
 	<div id="frame">
 		<h2>Secret Palace ShawnLee</h2>
 		<div class="mplayer">
-<embed src="http://www.xiami.com/widget/0_1771308220/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=27588022&auto=1&height=66"></iframe>
 		</div>
 		<div class="splitline">
 		</div>
-		<div class="well" ui-view>
+		<div class="mainMenu"  style="float:left">
+		<ul class="nav nav-pills nav-tabs nav-stacked" role="tablist" style="width:90px">
+				<li role="presentation" class="active"><a href="#essay" aria-controls="movie" role="tab" data-toggle="tab">杂文</a></li>
+				<li role="presentation"><a href="movie" aria-controls="movie" role="tab" data-toggle="tab">电影</a></li>
+				<li role="presentation"><a href="#book" aria-controls="book" role="tab" data-toggle="tab">书</a></li>
+				<li role="presentation"><a href="#guitar" aria-controls="guitar" role="tab" data-toggle="tab">吉他</a></li>
+				<li role="presentation"><a ui-sref="guitartheory" data-toggle="tab" >吉他乐理</a></li>
+			</ul>
+		</div>
+		<div ui-view style="float:right">
 		</div>
 	</div>
 </body>
