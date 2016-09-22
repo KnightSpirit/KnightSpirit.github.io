@@ -4,25 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>Document</title>
-    <style>
-        .panel .time{
-            font-size:2em;
-        }
-
-        button {
-            border-radius:1rem;
-            background-color: orange;
-        }
-    </style>
-</head>
-<body onload="InitTime()">
-    <div class="panel">
-        <div class="time" id="time">
-        </div>
-        <button onclick="IncreaseNumber()">click</button>
-    </div>
     <script type="text/javascript">
-        var initNumber = 0;
         (function (doc, win) {
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -40,6 +22,32 @@
         win.addEventListener(resizeEvt, recalc, false);
         doc.addEventListener('DOMContentLoaded', recalc, false);
     })(document, window);
+    </script>
+    <style>
+        .panel .time{
+            font-size:2em;
+        }
+        .panel {
+            margin : auto 4rem;
+        }
+        button {
+            font-size: 16px;
+            border-radius:14px;
+            background-color: orange;
+            width:1rem;
+            height: 30px;
+        }
+    </style>
+</head>
+<body onload="InitTime()">
+    <div class="panel">
+        <div class="time" id="time">
+        </div>
+        <button onclick="IncreaseNumber()">click</button>
+    </div>
+    <script type="text/javascript">
+        var initNumber = 0;
+        
         function InitTime(){
             var timeZone = document.getElementById("time");
             timeZone.innerHTML = initNumber;
