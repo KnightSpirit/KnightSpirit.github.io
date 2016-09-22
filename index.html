@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>Document</title>
     <style>
         .panel .time{
-            font-size: 2em
+            font-size:2em;
         }
 
         button {
-            border-radius:10px;
+            border-radius:1rem;
             background-color: orange;
         }
     </style>
@@ -22,6 +23,23 @@
     </div>
     <script type="text/javascript">
         var initNumber = 0;
+        (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth>=640){
+                    docEl.style.fontSize = '100px';
+                }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
         function InitTime(){
             var timeZone = document.getElementById("time");
             timeZone.innerHTML = initNumber;
