@@ -14,7 +14,7 @@ guitarTool.controller('ScaleController', function ScaleController($scope){
 		[0,0,0,0,0,0,0,0,0,0,0,0,0],
 		]
 		var puzzlePairs = getPuzzlePairs(10);
-		for (puzzleIndex in puzzlePairs)	{
+		for (puzzleIndex in puzzlePairs){
 			puzzleList[puzzlePairs[puzzleIndex][0]][puzzlePairs[puzzleIndex][1]] = 1;
 		}
 		return puzzleList;
@@ -48,5 +48,11 @@ guitarTool.controller('ScaleController', function ScaleController($scope){
 		}
 		list.splice(0, 0, lineNo);
 		return list;
+	}
+
+	function showNote(puzzle){
+		if (puzzle !== 0) {return;}
+
+				
 	}
 })

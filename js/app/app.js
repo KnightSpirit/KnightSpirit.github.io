@@ -17,6 +17,14 @@ myblog.config(['$stateProvider', '$urlRouterProvider',function ($stateProvider,$
 			controller:'ScaleController',
 			templateUrl:'view/guitartool/index.html'
 		})
+		.state('gsk', {
+			url:'/gsk',
+			templateUrl:'view/gsk.html'
+		})
+		.state('happ', {
+			url:'/happ',
+			templateUrl:'view/happ.html'
+		})
 }]);
 
 myblog.controller('ScaleController', function ScaleController($scope){
@@ -24,7 +32,7 @@ myblog.controller('ScaleController', function ScaleController($scope){
 	$scope.allScaleNotes = getScaleData();
 	$scope.puzzleScale = getPuzzleScale();
 	$scope.frets = ['', '1','2','3','4','5','6','7','8','9','10','11','12'];
-
+    $scope.showNote = showNote;
 	function getPuzzleScale(){
 		var puzzleList = [
 		[0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -69,5 +77,11 @@ myblog.controller('ScaleController', function ScaleController($scope){
 		}
 		list.splice(0, 0, lineNo);
 		return list;
+	}
+
+	function showNote(puzzle, pIndex, index){
+		if (puzzle !== 1) {return;}
+		// alert($scope.allScaleNotes[pIndex][index])
+		$(".puzzle").popover('show');
 	}
 })

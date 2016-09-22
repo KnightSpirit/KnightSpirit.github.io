@@ -24,16 +24,22 @@
 			<td ng-repeat="scale in frets">{{scale}}</td>
 		</tr>
 		<tr ng-repeat="ps in puzzleScale">
-			<td ng-repeat="puzzle in ps track by $index" ng-class="puzzle == 1 ? 'puzzle' : ''" >{{puzzle == 1 ? "?" : ""}}</td>
-		 </tr> 
-	</table>
-	<table border="1px solid">
-		<tr>
-			<td ng-repeat="scale in frets">{{scale}}</td>
-		</tr>
-		<tr ng-repeat="lineScale in allScaleNotes">
-			<td ng-repeat="scale in lineScale track by $index">{{scale }}</td>
-		</tr>
-	</table>		
+			<td ng-repeat="puzzle in ps track by $index">
+				<button type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="asdf"
+				ng-show="puzzle == 1"
+				>
+				?
+			</button>
+		</td>
+	</tr> 
+</table>
+<table border="1px solid">
+	<tr>
+		<td ng-repeat="scale in frets">{{scale}}</td>
+	</tr>
+	<tr ng-repeat="lineScale in allScaleNotes">
+		<td ng-repeat="scale in lineScale track by $index">{{scale }}</td>
+	</tr>
+</table>		
 </body>
 </html>
