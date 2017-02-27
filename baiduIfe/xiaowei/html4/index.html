@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 100%;
+		}
+		.container{
+			position: relative;
+			height: 100%;
+		}
+		.element{
+			position: absolute;
+			top:50%;
+			left:50%;
+			width: 400px;
+			height: 200px;
+			background-color: #ccc;
+			transform: translate(-50%, -50%);
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="element">
+			<span style="width: 50px;height:50px;display: block;position: absolute; background-color: #fc0; border-radius: 50%; transform: translate(-50%, -50%);" ></span>
+			<span style="width: 50px;height:50px;display: block;position: absolute; background-color: #fc0; border-radius: 50%; transform: translate(50%, 50%);bottom: 0px; right: 0px" ></span>
+
+		</div>
+	</div>	
+</body>
+</html>
