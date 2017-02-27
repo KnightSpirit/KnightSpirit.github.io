@@ -7,10 +7,11 @@
 		body{
 			padding: 20px;
 		}
+		/* float实现的css */
 		.mainpanel, .leftpanel, .rightpanel{
 			border: 1px solid #999;
 		}
-		.leftpanel, .rightpanel, .maincontent{
+		.leftpanel, .rightpanel, .maincontent .introduce{
 			background-color: white
 		}
 		.mainpanel{
@@ -21,78 +22,129 @@
 		}
 		.leftpanel{
 			width: 200px;
-			padding: 20px;
-			background-color: white;
 			float: left;
 			margin-left: -100%;
+			margin-right: 20px;
 		}
 		.glogo{
+			margin:20px 0px 20px 20px;
 			background-color:#eee;
-			padding: 20px;
 			float: left
 		}
 		.gname{
-			margin-left: 20px;
+			margin:20px 0px 20px 10px;
 			float: left;
+			font-size: 12px;
 		}
 
 		.rightpanel{
+			width: 120px;
 			background-color: white;
-			padding:20px;
 			float: right;
 			margin-left: -140px;
 		}
 
-		/*.rightpanel::after{
-			content: "";
-			clear: both;
-			display: block;
-		}*/
 		.maincontent{
 			float: left;
+			background-color: #eee;
 			width: 100%;
-			background-color: #eee
 		}
 		.introduce{
-			margin-left: 260px;
+			margin-left: 220px;
 			margin-right: 140px;
 			border: 1px solid #999;
-			height: 100%
+			height: 100%;
+			padding: 20px;
 		}
-		.introduce article{
+		.plogo{
+			margin: 20px;
+		}
+		/* position实现的css */
+		.leftpanelp {
+			width: 200px;
+			top:20px;
+			position: absolute;
+			border:1px solid #999;
 			background-color: white;
-			height: 100%
 		}
+		.maincontentp{
+			margin-left: 220px;
+			margin-right:  140px;
+			background-color: white;
+			border:1px solid #999;
+			height: 500px;
+		}
+		.rightpanelp{
+			position: absolute;
+			right: 20px;
+			border:1px solid #999;
+			top:20px;
+			width: 120px;
+			background-color: white
+		}
+		.glogop{
+			margin: 20px;
+			margin-right: 10px;
+			float: left;
+		}
+		.gnamep{
+			float:left;
+			font-size: 14px;
+			margin-top: 20px;
+		 }
+		 .plogop {
+		 	margin: 20px
+		 }
 	</style>
 </head>
 <body>
-<div class="mainpanel">
-     <div class="maincontent">
-     		<div class="introduce">
-     		<article>
-		 	<p>
- 				婉琦和梦泽
- 			</p>
-     		</article>
-     		</div>
-	</div>
-	<div class="leftpanel">
-		<div class="glogo">
-			<img src="" alt="" width="80px" height="80px">
+	<h1>float实现法</h1>
+	<div class="mainpanel">
+		<div class="maincontent">
+			<div class="introduce">
+				婉琦和梦泽<br>
+				一个程序员，一个设计师。
+			</div>
 		</div>
-		<div class="gname">
-		dt
+		<div class="leftpanel">
+			<div class="glogo">
+				<img src="" alt="不贴照片" width="80px" height="80px">
+			</div>
+			<div class="gname">
+				DreamTown
+			</div>
+		</div>
+		<div class="rightpanel">
+			<div class="plogo">
+				<img src="" alt="" width="80px" height="80px">	
+			</div>
+			<div class="plogo">
+				<img src="" alt="" width="80px" height="80px">	
+			</div>	
+		</div>
+	</div>	
+
+	<h1>position实现法</h1>
+	<div style=" position: relative;background-color:#eee;border:1px solid #999;padding: 20px;">
+		<div class="maincontentp">
+			123
+		</div>
+		<div class="leftpanelp">
+			<div class="glogop">
+				<img src="" alt="" width="80px" height="80px">
+			</div>
+			<div class="gnamep">
+				DreamTown
+			</div>
+		</div>
+		<div class="rightpanelp">
+			<div class="plogop">
+				<img src="" alt="" width="80px" height="80px">
+			</div>
+			<div class="plogop">
+				<img src="" alt="" width="80px" height="80px">
+			</div>
 		</div>
 	</div>
-	<div class="rightpanel">
-		<div class="plogo">
-			<img src="" alt="" width="80px" height="80px">	
-		</div>
-		<div class="plogo">
-			<img src="" alt="" width="80px" height="80px">	
-		</div>	
-	</div>
-	
-</div>	
 </body>
 </html>
