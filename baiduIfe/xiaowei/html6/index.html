@@ -22,9 +22,11 @@
 			height: 1386px;
 			background-color: white;	
 		}
+		.wrapper {
+			width:892px;
+			margin: 0 auto
+		}
 		.page-header{
-			width: 892px;
-			margin: 0 auto;
 			border-bottom: 2px solid #938e8c;
 			position:relative;
 		}
@@ -50,22 +52,102 @@
 			bottom: 1px;
 			right: 5px;
 		}
-
-		
+		.ju-row{
+			margin-top: 30px;
+		}
+		.ju-img{
+			float: left;
+			margin-right: 45px;	
+			position: relative;
+		}
+		.ju-content{
+			border-top: 2px solid #cc8091;
+			width: 203px;
+			float: left;
+		}
+		.ju-img span:first-child{
+			display: block;
+		}
+		.ju-title{
+			margin-top: 5px;
+		}
+		.ju-row::after{
+			content: "";
+			visibility: hidden;
+			display: block;
+			clear: both;
+		}
+		.mid-part{
+			margin-top: 20px;
+		}
+		.mid-part .col1{
+			float: left;
+			margin-right: 20px;
+		}
 	</style>
 </head>
 <body>
 	<div class="newspaper">
 		<div class="newscontent">
-			<div class="page-header">
-				<div class="header-link">
-					<p>
-						dreamTownQZ
-					</p>
+			<div class="wrapper">
+				<div class="page-header">
+					<div class="header-link">
+						<p>
+							dreamTownQZ
+						</p>
+					</div>
+					<div class="header-link-date">2017.2</div>
 				</div>
-				<div class="header-link-date">2017.2</div>
+				<div class="ju-row">
+					<div class="ju-img">
+						<img src="1.jpg" alt="" width="641px" height="301px">
+						<span></span>
+						<span></span>
+					</div>
+					<div class="ju-content">
+						<div class="ju-title">
+							<div style="font-size:19px;display: inline-block;text-decoration: underline;">A</div><div style="font-size:14px;display: inline-block;text-decoration: underline;">BOUT</div><br>
+							<div style="font-size:19px;display: inline-block;text-decoration: underline;">T</div><div style="font-size:14px;display: inline-block;text-decoration: underline;">ECONOLOGY</div>
+							<div>
+								<pre style="font-size: 12px;font-family: 楷体;font-style: italic;">About technology about technology
+									about technology </pre>
+								</div>
+								<div style="font-size:116px; transform: skew(-10deg); color: #75b86b;font-family: 微软雅黑;">
+									700
+								</div>
+								<div style="position: relative;margin-left: 5px">
+									<div class="common-font-style" style="font-size:55px">3.2</div>
+									<div style="position: absolute; left: 85px;bottom: 10px">
+										<div class="common-font-style" style="font-size: 21px">CSS</div>
+										<div class="common-font-style" style="font-size: 12px;">css css css css</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="mid-part">
+						<div class="col1">
+							<h6 style="text-decoration: underline;color:#418c59;font-size: 16px">What</h6>
+							<div style="font-size:12px">
+								前端前端前端前端前端前端前端
+							</div>
+						</div>	
+						<div class="col1">
+							<h6 style="text-decoration: underline;color:#d2994f;font-size: 16px">What</h6>
+							<div style="font-size:12px">
+								前端前端前端前端前端前端前端
+							</div>
+						</div>	
+						<div class="col1">
+							<h6 style="text-decoration: underline;color:#cc7680;font-size: 16px">What</h6>
+							<div style="font-size:12px">
+								前端前端前端前端前端前端前端
+							</div>
+						</div>	
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>	
-</body>
-</html>
+		</div>	
+	</body>
+	</html>
