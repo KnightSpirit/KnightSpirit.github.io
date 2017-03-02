@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.color-block{
+			display: inline-block;
+			background-color: red;
+			color: white;
+			padding: 4px;
+			margin-right: 10px;
+			position: absolute;
+			bottom: 0px;
+		}
+		#result, #sort{
+			height: 150px;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="number" id="val" min="10" max="100">
+		<input type="button" value="左侧入" id="leftin">
+		<input type="button" value="右侧入" style="margin-right: 20px" id="rightin">
+		<input type="button" value="左侧出" id="lout" >
+		<input type="button" value="右侧出" id="rout" >
+		<input type="button" value="排序(冒泡)" id="bubblesort" >
+	</div>	
+	<div id="result">
+	</div>
+	<div id="sort">
+		
+	</div>
+	<script type="text/javascript">
+		function init(){
+			var lin = document.getElementById("leftin"),
+			rin = document.getElementById("rightin"),
+			lout = document.getElementById("lout"),
+			rout = document.getElementById("rout"),
+			input = document.getElementById("val"),
+			bubblebutton = document.getElementById("bubblesort");
+			lin.onclick = insertblock;
+			rin.onclick = addblock;
+			lout.onclick = removeFromLeft;
+			rout.onclick = removeFromRight;
+			input.onchange = checkNum;
+			bubblebutton.onclick = sort;
+		}
+
+		var r = document.getElementById("result");
+		var s = document.getElementById("sort");
+		function removeFromLeft(){
+			alert(r.children[0].innerHTML);
+			r.removeChild(r.children[0]);
+		}
+		function insertAfter(newEl, targetEl)
+		{
+			var parentEl = targetEl.parentNode;
+
+			if(parentEl.lastChild == targetEl)
+			{
+				parentEl.appendChild(newEl);
+			}else
+			{
+				parentEl.insertBefore(newEl,targetEl.nextSibling);
+			}            
+		}
+		function sort(){
+			var cl = r.children;
+			if (cl.length === 0 || cl.length === 1) {return;}
+			for (var i = 0; i < cl.length; i++) {
+				for (var j = i + 1; j < cl.length; j++) {
+					if (parseInt(cl[i].innerHTML, 10) > parseInt(cl[j].innerHTML, 10)) {
+						var th = cl[i].style.height;
+						cl[i].style.height = cl[j].style.height;
+						cl[j].style.height = th;
+						var tiHTML = cl[i].innerHTML;
+						cl[i].innerHTML = cl[j].innerHTML;
+						cl[j].innerHTML = tiHTML;
+						setTimeout(1000);
+					}
+				}
+			}
+		}
+
+		function rePosition(){
+			var cl = r.children;
+			for (var i = 0; i < index - 1; i++) {
+				cl[i].style.marginLeft = (parseInt(cl[i].style.marginLeft, 10) - 30) + "px";
+			}
+		}
+		var index = 1;
+		function checkNum (){
+			var val = document.getElementById("val");
+			var num = parseInt(val.value);
+			if (num < 10 || num > 100) {
+				alert("输入数字不合乎标准");
+				val.value = "";
+			}
+		}
+
+		function removeFromRight(){
+			alert(r.children[r.children.length - 1].innerHTML);
+			r.removeChild(r.children[r.children.length - 1]);
+		}
+		function insertblock(){
+			if (r.children.length > 60) {
+				alert("元素超过60个");
+				return;
+			}
+			var cl = r.children;
+			for (var i = 0; i < cl.length; i++) {
+				var left = parseInt(cl[i].style.marginLeft);
+				cl[i].style.marginLeft = (left + 30) + "px";
+			}
+			r.insertBefore(createNumberBlock(1, document.getElementById("val").value), r.children[0]);
+			index ++;
+		}
+		function addblock (){
+			if (r.children.length > 60) {
+				alert("元素超过60个");
+				return;
+			}
+			r.appendChild(createNumberBlock(index, document.getElementById("val").value));
+			index ++;
+		}
+		function createNumberBlock(index, value){
+			var div = document.createElement("div");
+			div.innerHTML = value;
+			div.className = "color-block";
+			div.style.height = div.innerHTML + "px";
+			div.style.marginLeft = 30 * (index - 1)  + "px";
+			div.onclick = function(){r.removeChild(this); };
+			return div;
+		}
+		init();
+	</script>
+</body>
+</html>
