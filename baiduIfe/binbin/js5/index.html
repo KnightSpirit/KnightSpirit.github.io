@@ -8,12 +8,13 @@
 			display: inline-block;
 			background-color: red;
 			color: white;
-			padding: 4px;
-			margin-right: 10px;
+			padding: 10px;
+			margin-right: 30px;
+			font-size: 14px;
 			position: absolute;
 			bottom: 0px;
 		}
-		#result, #sort{
+		#result{
 			height: 150px;
 			position: relative;
 		}
@@ -30,9 +31,6 @@
 	</div>	
 	<div id="result">
 	</div>
-	<div id="sort">
-		
-	</div>
 	<script type="text/javascript">
 		function init(){
 			var lin = document.getElementById("leftin"),
@@ -41,32 +39,29 @@
 			rout = document.getElementById("rout"),
 			input = document.getElementById("val"),
 			bubblebutton = document.getElementById("bubblesort");
-			lin.onclick = insertblock;
-			rin.onclick = addblock;
+			lin.onclick = createData(true);
+			rin.onclick = createData(false);
 			lout.onclick = removeFromLeft;
 			rout.onclick = removeFromRight;
 			input.onchange = checkNum;
 			bubblebutton.onclick = sort;
 		}
 
-		var r = document.getElementById("result");
-		var s = document.getElementById("sort");
-		function removeFromLeft(){
-			alert(r.children[0].innerHTML);
-			r.removeChild(r.children[0]);
-		}
-		function insertAfter(newEl, targetEl)
-		{
-			var parentEl = targetEl.parentNode;
 
-			if(parentEl.lastChild == targetEl)
-			{
-				parentEl.appendChild(newEl);
-			}else
-			{
-				parentEl.insertBefore(newEl,targetEl.nextSibling);
-			}            
+		var r = document.getElementById("result");
+
+		function createData(insert){
+			if (r.children.length > 60) {
+				alert("元素超过60个");
+				return;
+			}
+			if (insert) {
+				return insertblock;
+			} else {
+				return appendblock;
+			}
 		}
+
 		function sort(){
 			var cl = r.children;
 			if (cl.length === 0 || cl.length === 1) {return;}
@@ -79,18 +74,11 @@
 						var tiHTML = cl[i].innerHTML;
 						cl[i].innerHTML = cl[j].innerHTML;
 						cl[j].innerHTML = tiHTML;
-						setTimeout(1000);
 					}
 				}
 			}
 		}
 
-		function rePosition(){
-			var cl = r.children;
-			for (var i = 0; i < index - 1; i++) {
-				cl[i].style.marginLeft = (parseInt(cl[i].style.marginLeft, 10) - 30) + "px";
-			}
-		}
 		var index = 1;
 		function checkNum (){
 			var val = document.getElementById("val");
@@ -103,38 +91,50 @@
 
 		function removeFromRight(){
 			alert(r.children[r.children.length - 1].innerHTML);
-			r.removeChild(r.children[r.children.length - 1]);
+			removeChildReposition(r.children.length - 1);
 		}
+
+		function removeFromLeft(){
+			alert(r.children[0].innerHTML);
+			removeChildReposition(0);
+		}
+
 		function insertblock(){
-			if (r.children.length > 60) {
-				alert("元素超过60个");
-				return;
-			}
 			var cl = r.children;
 			for (var i = 0; i < cl.length; i++) {
 				var left = parseInt(cl[i].style.marginLeft);
-				cl[i].style.marginLeft = (left + 30) + "px";
+				cl[i].style.marginLeft = (left + 50) + "px";
 			}
 			r.insertBefore(createNumberBlock(1, document.getElementById("val").value), r.children[0]);
 			index ++;
 		}
-		function addblock (){
-			if (r.children.length > 60) {
-				alert("元素超过60个");
-				return;
-			}
+
+		function appendblock(){
 			r.appendChild(createNumberBlock(index, document.getElementById("val").value));
 			index ++;
 		}
+
 		function createNumberBlock(index, value){
 			var div = document.createElement("div");
 			div.innerHTML = value;
 			div.className = "color-block";
 			div.style.height = div.innerHTML + "px";
-			div.style.marginLeft = 30 * (index - 1)  + "px";
-			div.onclick = function(){r.removeChild(this); };
+			div.style.marginLeft = 50 * (index - 1)  + "px";
+			div.onclick = function(e){
+				var bindex = Array.prototype.indexOf.call(this.parentNode.children, e.target);
+				removeChildReposition(bindex);
+			}
 			return div;
 		}
+
+		function removeChildReposition(bindex){
+			for (var i = bindex; i < r.children.length; i++) {
+				r.children[i].style.marginLeft = parseInt(r.children[i].style.marginLeft, 10) - 50 + "px";
+			}	
+			r.removeChild(r.children[bindex]);
+			index--;
+		}
+
 		init();
 	</script>
 </body>
