@@ -28,6 +28,8 @@
 		<input type="button" value="左侧出" id="lout" >
 		<input type="button" value="右侧出" id="rout" >
 		<input type="button" value="排序(冒泡)" id="bubblesort" >
+		<input type="button" value="取消排序(冒泡)" id="cancelsort" >
+		<input type="button" value="生成测试数据" id="testdata" >
 	</div>	
 	<div id="result">
 	</div>
@@ -38,6 +40,8 @@
 			lout = document.getElementById("lout"),
 			rout = document.getElementById("rout"),
 			input = document.getElementById("val"),
+			cancelbutton = document.getElementById("cancelsort"),
+			testbutton = document.getElementById("testdata"),
 			bubblebutton = document.getElementById("bubblesort");
 			lin.onclick = createData(true);
 			rin.onclick = createData(false);
@@ -45,6 +49,8 @@
 			rout.onclick = removeFromRight;
 			input.onchange = checkNum;
 			bubblebutton.onclick = sort;
+			testbutton.onclick = createTestData;
+			cancelbutton.onclick = stopSort;
 		}
 
 
@@ -61,21 +67,54 @@
 				return appendblock;
 			}
 		}
+		var sortInterval, externalIndex, innerIndex;
+
+		function stopSort(){
+			clearInterval(sortInterval);
+		}
 
 		function sort(){
 			var cl = r.children;
 			if (cl.length === 0 || cl.length === 1) {return;}
-			for (var i = 0; i < cl.length; i++) {
-				for (var j = i + 1; j < cl.length; j++) {
-					if (parseInt(cl[i].innerHTML, 10) > parseInt(cl[j].innerHTML, 10)) {
-						var th = cl[i].style.height;
-						cl[i].style.height = cl[j].style.height;
-						cl[j].style.height = th;
-						var tiHTML = cl[i].innerHTML;
-						cl[i].innerHTML = cl[j].innerHTML;
-						cl[j].innerHTML = tiHTML;
-					}
-				}
+			externalIndex = 0;
+			innerIndex = externalIndex + 1;
+			sortInterval = setInterval(exchangeNumber, 200);
+		}
+
+		function exchangeNumber(){
+			var cl = r.children;
+			if (parseInt(cl[externalIndex].innerHTML, 10) > parseInt(cl[innerIndex].innerHTML, 10)) {
+				var th = cl[externalIndex].style.height;
+				cl[externalIndex].style.height = cl[innerIndex].style.height;
+				cl[innerIndex].style.height = th;
+				var tiHTML = cl[externalIndex].innerHTML;
+				cl[externalIndex].innerHTML = cl[innerIndex].innerHTML;
+				cl[innerIndex].innerHTML = tiHTML;
+			}
+
+			if (innerIndex == cl.length - 1) {
+				externalIndex ++;
+				innerIndex = externalIndex + 1;
+			} else {
+				innerIndex++;
+			}
+
+			if (externalIndex == cl.length - 1) {
+				clearInterval(sortInterval);
+			}
+		}
+
+		function createTestData(){
+			index = 0;
+			r.innerHTML = "";
+			for (var i = 0; i < 24; i++) {
+				var v ;
+				do{
+					v = parseInt(Math.random()*100);
+				} while (v < 10)
+				var div = createNumberBlock(index, v);
+				r.appendChild(div);
+				index++;
 			}
 		}
 
