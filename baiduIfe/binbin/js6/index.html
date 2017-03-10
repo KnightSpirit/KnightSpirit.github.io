@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.color-block{
+			display: inline-block;
+			background-color: red;
+			color: white;
+			padding: 4px;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="number" id="val">
+		<input type="button" value="左侧入" id="leftin">
+		<input type="button" value="右侧入" style="margin-right: 20px" id="rightin">
+		<input type="button" value="左侧出" id="lout" >
+		<input type="button" value="右侧出" id="rout" >
+	</div>	
+	<div id="result">
+	</div>
+	<script type="text/javascript">
+		function init(){
+			var lin = document.getElementById("leftin"),
+			      rin = document.getElementById("rightin"),
+			      lout = document.getElementById("lout"),
+			      rout = document.getElementById("rout");
+			 lin.onclick = insertblock;
+			 rin.onclick = addblock;
+			 lout.onclick = removeFromLeft;
+			 rout.onclick = removeFromRight;
+
+		}
+
+		var r = document.getElementById("result");
+		function removeFromLeft(){
+			alert(r.children[0].innerHTML);
+			r.removeChild(r.children[0]);
+		}
+
+		function removeFromRight(){
+			alert(r.children[r.children.length - 1].innerHTML);
+			r.removeChild(r.children[r.children.length - 1]);
+		}
+		function insertblock(){
+			r.insertBefore(createNumberBlock(), r.children[0]);
+		}
+		function addblock (){
+			r.appendChild(createNumberBlock());
+		}
+		function createNumberBlock(){
+			var div = document.createElement("div");
+			div.className = "color-block";
+			div.innerHTML = document.getElementById("val").value;
+			div.onclick = function(){r.removeChild(this); };
+			return div;
+		}
+		init();
+	</script>
+</body>
+</html>
