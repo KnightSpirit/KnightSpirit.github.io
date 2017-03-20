@@ -179,18 +179,19 @@
 		}
 		.subtitle{
 			font-size: 12px;
-			padding: 52px;
+			padding: 12px;
+			margin-bottom: 30px;
 		}
 		.line {
 			width: 33px;
 			border-bottom: 2px solid white;
 			margin: 0 auto;
-			margin-bottom: 15px;
+			margin-bottom: 7px;
 		}
 		.sform{
 			ul{
 				font-size: 0;
-				width: 1040px;
+				width: 1100px;
 				margin: 0 auto;
 				&::after{
 					.clearcss;
@@ -203,7 +204,19 @@
 						width: 235px;
 						height: 30px;
 						padding-left: 5px;
-						margin-right: 40px;
+						margin-right: 25px;
+						outline-color: rgb(190, 79, 72)
+					}
+					button{
+						background-color: rgb(190, 79, 72);
+						width: 235px;
+						height: 34px;
+						outline: none;
+						color: white;
+						letter-spacing: 30px;
+						padding-left: 30px;
+						border: none;
+						text-align: center;
 					}
 					.drop{
 						display: inline-block;
@@ -211,10 +224,30 @@
 						width: 18px;
 						height: 18px;
 						bottom: 8px;
-						right: 5px;
+						right: 35px;
 						background-image: url(down.png);
 					}
 				}
+			}
+		}
+	}
+	.gallery{
+		display: flex;
+		justify-content: space-between;
+		height: 605px;
+		width: 1000px;
+		margin: 0 auto;
+		background-color: rgb(247, 247, 247);
+		.img-group{
+			border: 1px solid rgb(248, 247, 247);
+			width: 216px;
+			height: 312px;
+			.draw{
+				padding: 7px 13px;
+			}
+			.title {
+				text-align: center;
+				margin-top: 10px;
 			}
 		}
 	}
