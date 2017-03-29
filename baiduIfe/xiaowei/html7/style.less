@@ -355,22 +355,55 @@
 			}
 		}
 	}
+	.div-g(@color; @fcolor){
+		div:nth-child(1), div:nth-child(2){
+			height: 20px;
+			color :@fcolor;
+			margin-bottom: 20px;
+		}
+		div:nth-child(1){
+			margin-top: 169px;
+		}
+		div.line{
+			margin: 0 auto;
+			width: 50px;
+			height: 2px;
+			background-color: @color;
+			margin-bottom: 20px;
+		}
+
+		a {
+			margin-top: 20px;
+			color:white;
+			display:block;
+			padding: 5px;
+			border:2px solid @color;
+			width: 140px;
+			margin:  0 auto;
+		}
+	}
 	.su-b {
 		&::after{
 			.clearcss
 		}
-		div{
+		.part{
 			float: left;
 			width: @wrapper-width / 3;
 			height:520px;
 		}
-		div:first-child{
+		.part:first-child{
 			background-color: rgb(231, 79, 77);
+			text-align: center;
+			.div-g(white, white);
+		}
+		.part:nth-child(2){
+			text-align: center;
+			.div-g(rgb(171,171,171), black);
 		}
 		#t {
 			background-color: white;
 		}
-		div:nth-child(3){
+		.part:nth-child(3){
 			position: relative;
 			background-image: url(w.jpg);
 			.triangle-right {
@@ -384,6 +417,90 @@
 				top: 230px;
 				left: 0px;
 			}	
+		}
+	}
+}
+
+.footer {
+	.contract{
+		padding-top: 86px;
+		background-color: rgb(50, 53, 62);
+		text-align: center;
+		color: white;
+		height: 350 - 86px;
+		h3{
+			margin-bottom: 10px;
+		}
+		form{
+			margin-top: 30px;
+			margin-bottom: 50px;
+			div{
+				margin: 0 auto;
+				width: 510px;
+				height: 40px;
+				&::after{
+					content: "";
+					display: block;
+					visibility: hidden;
+					clear: both;
+				}
+				.t{
+					width: 430px;
+						float: left;
+						input[type=text]{
+						width: 100%;
+						height: 40px;
+						border: 0;
+					}
+				}
+				.b{
+					width: 80px;
+					float: left;
+					button{
+						border: 0;
+						width: 100%;
+						height: 40px;
+						background-color: rgb(111, 114, 120);
+						color:white;
+						font-size: 16px;
+						letter-spacing: 10px;
+						text-align: center;
+						line-height: 40px;
+						padding-left: 10px;
+					}
+				}
+			}
+		}
+		.icong{
+			width: 46*4px;
+			height: 26px;
+			margin: 0 auto;
+			ul{
+				background-color: rgb(50, 53, 62);
+			}
+			ul li{
+				float: left;
+				width:26px;
+				height: 26px;
+				margin-left: 20px;
+				display: block;
+				background-image: url(qq.png)
+			}
+		}
+		
+	}
+	.fbottom{
+		padding-top: 35px;
+		background-color: rgb(47, 48, 56);
+		height:30px;
+		div:first-child{
+			float: left;
+			margin-left: 100px
+		}
+		color: white;
+		div:last-child{
+			float:right;
+			margin-right: 40px
 		}
 	}
 }
