@@ -1,0 +1,39 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.main-grid-container{
+	width: 100%;
+	max-width: 1200px;
+}
+
+.row::before, .row::after{
+	content: "";
+	clear: both;
+	display: table;
+}
+
+[class*='zcol-']{
+	background-color: #eee;
+	height: 50px;
+	border: 1px solid #999;
+	margin: 10px;
+	width: 8.33%;
+	float: left;
+	box-sizing: border-box;
+}
+
+.generate-zcol(12);
+
+.generate-zcol(@n, @i:1) when (@i <= @n){
+	.zcol-@{i}{
+		width: (@i * 100% / @n) - 10px;
+	}
+	.generate-zcol(@n, (@i + 1));
+}
+
+@media screen and (max-width:768px){
+
+}
+
