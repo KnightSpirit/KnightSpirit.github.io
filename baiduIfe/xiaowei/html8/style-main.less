@@ -2,10 +2,11 @@
 	margin: 0px;
 	padding: 0px;
 }
-
+@mw:1200px;
+@mv:10px;
 .main-grid-container{
 	width: 100%;
-	max-width: 1200px;
+	max-width: @mw;
 }
 
 .row::before, .row::after{
@@ -18,22 +19,18 @@
 	background-color: #eee;
 	height: 50px;
 	border: 1px solid #999;
-	margin: 10px;
+      margin: 10px;
 	width: 8.33%;
 	float: left;
-	box-sizing: border-box;
+      box-sizing: border-box;
 }
 
 .generate-zcol(12);
 
 .generate-zcol(@n, @i:1) when (@i <= @n){
 	.zcol-@{i}{
-		width: (@i * 100% / @n) - 10px;
+		width: calc((@i  / @n) * 100% ~ "-" @mv *2) ;
 	}
 	.generate-zcol(@n, (@i + 1));
-}
-
-@media screen and (max-width:768px){
-
 }
 
