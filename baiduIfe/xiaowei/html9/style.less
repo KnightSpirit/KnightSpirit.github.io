@@ -6,7 +6,8 @@
 .main-container{
 	display: flex;
 	justify-content:space-between;
-	align-items:start;
+	align-items:flex-start;
+	flex-wrap:wrap;
 	div{
 		width: 150px;
 		padding: 20px;
@@ -15,22 +16,18 @@
 
 	div:nth-of-type(1){
 		height: 120px;
-		order:2;
 	}
 	div:nth-of-type(2){
 		height: 100px;
-		order:3;
 	}
 	div:nth-of-type(3){
 		height: 40px;
-		order:4;
 	}
 	div:nth-of-type(4){
 		height: 200px;
 		border-color: #0f0;
-		order: 1;
+		order:-1
 	}
-	flex-wrap:wrap;
 }
 
 @media screen and (min-width:640px) {
@@ -38,18 +35,9 @@
 		display: flex;
 		justify-content:space-between;
 		align-items:center;
-		flex-wrap:nowrap
-		div:nth-of-type(1){
-			order:1;
-		}
-		div:nth-of-type(2){
-			order:2;
-		}
-		div:nth-of-type(3){
-			order:3;
-		}
+		flex-wrap:nowrap;
 		div:nth-of-type(4){
-			order:4;
+			order: 4;
 		}
 	}
 }
