@@ -9,6 +9,19 @@
 //     this.subs.forEach(sub=>sub.update())
 //   }
 // }
+class Message{
+    constructor(){
+        this.subs = [];
+    }
+
+    addSub(sub){
+        this.subs.push(sub);
+    }
+
+    notify(){
+        this.subs.forEach(sub => sub.update())
+    }
+}
 
 function Observe(data) {
     if (typeof data !== 'object')
@@ -16,38 +29,25 @@ function Observe(data) {
 
     this.data = data;
     createObject(this.data, data);
-    // walk(data);
-    // function walk(data){
-    //     Object.keys(data).forEach(key => convert(key, data[key]));
-    // }
+}
 
-    // function convert(key, val){
-    //     defineReactive(data, key, val);
-    // }
+Observe.prototype.$watch = function(p, func){
+    let reDepth = 1;
+    let propertyChainArray = p.split('.');
+    let depth = propertyChainArray.length;
+    redefineProperty(depth, this.data, propertyChainArray, func, reDepth);
+}
 
-    // function defineReactive(data, key, val){
-    //     let dep = new Dep();
-    //     let cObj = observe(val);
-    //     Object.defineProperty(obj, key, {
-    //         enumerable: true,
-    //         configurable: true,
-    //         get:() => {
-    //             console.log(`access ${key}`);
-    //             return val;
-    //         },
-    //         set: v => {
-    //             cObj = observe(newval);
-    //             dep.notify();
-    //         }
-    //     })
-    // }
-
-    // function observe(val, vm){
-    //     if(!val || typeof val !== 'object'){
-    //         return;
-    //     }
-    //     return new Observe(val);
-    // }
+function watchProperty(depth, tar, p, func, reDepth){
+    for(let pName in tar){
+        if(depth > reDepth) {
+            watchProperty(depth, tar[pName], p, func, reDepth + 1);
+        } else{
+            if(pName === p[reDepth - 1]){
+                createProperty(tar, pName, tar[pName], func);
+            }
+        }
+    }
 }
 
 function createObject(tar, data) {
@@ -60,7 +60,8 @@ function createObject(tar, data) {
     }
 }
 
-function createProperty(tar, key, val){
+function createProperty(tar, key, val, callback){
+    let m = new Message();
     Object.defineProperty(tar, key,  {
         get() {
             console.log(`access ${key}`)
@@ -71,8 +72,9 @@ function createProperty(tar, key, val){
             if (typeof v === 'object'){
                 new Observe(v)
             }
+            if(callback) callback(v);
+            m.notify();
             val = v;
-            console.log(`set${key}, newValue:${val}`)
         }
     });
 }
@@ -88,6 +90,10 @@ let obj = {
 }
 
 let s = new Observe(obj)
+
+s.$watch('c.d', function(a){
+    console.log(`重新设置参数, 值为${a}`);
+})
 
 // 观察者构造函数
 // function Observer(data) {
