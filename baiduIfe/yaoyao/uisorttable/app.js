@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import main_css from './src/css/main.less'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import main_css from './src/css/main.less';
 
 class UiSortTable extends React.Component{
     constructor(){
@@ -10,7 +10,7 @@ class UiSortTable extends React.Component{
                 col : 0,
                 direction: true
             }
-        }
+        };
     }
 
     sortColumn(index){
@@ -36,7 +36,7 @@ class UiTableHeader extends React.Component{
                 col:0,
                 direction : false
             }
-        }
+        };
     }
 
     componentDidMount(){
@@ -48,7 +48,7 @@ class UiTableHeader extends React.Component{
                 col:index,
                 direction : !this.state.sort.direction
             }
-        })
+        });
         onHeaderClick(this.state.sort);
     }
 
@@ -59,7 +59,7 @@ class UiTableHeader extends React.Component{
             let header_class = this.title[i] !== "姓名" ? "header can-sort":"header";
             header.push(
                 <span onClick={() => this.sortThisCol(i)} className={header_class} key={i} >{this.title[i]}</span>
-            )
+            );
         }
         return <div style={{marginBottom:12+'px'}}>{header}</div>;
     }
@@ -67,7 +67,7 @@ class UiTableHeader extends React.Component{
 
 class UiTableBody extends React.Component{
     constructor(props){
-        super()
+        super();
     }
 
     render(){
@@ -84,7 +84,7 @@ class UiTableBody extends React.Component{
                 name:"fsadsdaf",
                 result : [123,89,56]
             }
-        ]
+        ];
 
         let dataRow = this.rData.map(rData=>{ 
             return (
@@ -103,4 +103,5 @@ class UiTableBody extends React.Component{
 ReactDOM.render(
     <UiSortTable />,
     document.getElementById("root")
-)
+
+);
