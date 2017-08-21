@@ -1,26 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import main_css from './src/css/main.less';
+import customData from './data.json'
 
 class UiSortTable extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        console.log(this.props.uData)
         this.state = {
             sort : {
                 col : 0,
                 direction: true
-            }
+            },
+            headerData:[]
         };
     }
 
     sortColumn(index){
-        let a = index;
+        this.setState({
+            sort:index
+        })
+        console.log("Click sort");
     }
 
     render(){
         return (
             <div>
-                <UiTableHeader onHeaderClick={()=> sortColumn()}  />
+                <UiTableHeader onHeaderClick={(p)=> this.sortColumn(p)}  />
                 <UiTableBody sort={this.state.sort} />
             </div>
         );
@@ -39,9 +45,6 @@ class UiTableHeader extends React.Component{
         };
     }
 
-    componentDidMount(){
-    }
-
     sortThisCol(index){
         this.setState({
             sort: {
@@ -49,7 +52,7 @@ class UiTableHeader extends React.Component{
                 direction : !this.state.sort.direction
             }
         });
-        onHeaderClick(this.state.sort);
+        this.props.onHeaderClick(this.state.sort);
     }
 
     render(){
@@ -86,6 +89,16 @@ class UiTableBody extends React.Component{
             }
         ];
 
+        let sortOption = this.props.sort;
+        if (this.props.sortMethod) this.rData.sort(sortMethod);
+        else{
+            this.rData.sort((p1, p2) =>{
+                let result = sortOption.direction ? p1.result[sortOption.col] - p2.result[sortOption.col] :
+                             -(p1.result[sortOption.col] - p2.result[sortOption.col]);
+                return result;
+            })
+        }
+
         let dataRow = this.rData.map(rData=>{ 
             return (
                 <div>
@@ -100,8 +113,11 @@ class UiTableBody extends React.Component{
     }
 }
 
-ReactDOM.render(
-    <UiSortTable />,
-    document.getElementById("root")
+function loadUiTable(){
+    ReactDOM.render(
+        <UiSortTable uData={customData} />,
+        document.getElementById("root")
+    );
+}
 
-);
+loadUiTable();
