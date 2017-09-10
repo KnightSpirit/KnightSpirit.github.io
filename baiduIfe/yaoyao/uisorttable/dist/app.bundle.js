@@ -20,8 +20,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./main.less", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./main.less");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.5@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./main.less", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.5@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./main.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -586,6 +586,197 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ 189:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var UiTableHeader = function (_React$Component) {
+  _inherits(UiTableHeader, _React$Component);
+
+  function UiTableHeader(props) {
+    _classCallCheck(this, UiTableHeader);
+
+    var _this = _possibleConstructorReturn(this, (UiTableHeader.__proto__ || Object.getPrototypeOf(UiTableHeader)).call(this));
+
+    _this.title = [];
+    _this.state = {
+      sort: {
+        col: 0,
+        direction: false
+      }
+    };
+    return _this;
+  }
+
+  _createClass(UiTableHeader, [{
+    key: 'sortThisCol',
+    value: function sortThisCol(index) {
+      this.setState({
+        sort: {
+          col: index,
+          direction: !this.state.sort.direction
+        }
+      });
+      this.props.onHeaderClick(this.state.sort);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var header = [];
+      this.title = ['姓名', '数学', '语文', '英语'];
+
+      var _loop = function _loop(i) {
+        var headerClass = _this2.title[i] !== '姓名' ? 'header can-sort' : 'header';
+        header.push(_react2.default.createElement(
+          'span',
+          { onClick: function onClick() {
+              return _this2.sortThisCol(i);
+            }, className: headerClass, key: i },
+          _this2.title[i]
+        ));
+      };
+
+      for (var i = 0; i < this.title.length; i++) {
+        _loop(i);
+      }
+      return _react2.default.createElement(
+        'div',
+        { style: { marginBottom: 12 + 'px' } },
+        header
+      );
+    }
+  }]);
+
+  return UiTableHeader;
+}(_react2.default.Component);
+
+exports.default = UiTableHeader;
+
+/***/ }),
+
+/***/ 190:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(24);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var UiTableBody = function (_React$Component) {
+  _inherits(UiTableBody, _React$Component);
+
+  function UiTableBody(props) {
+    _classCallCheck(this, UiTableBody);
+
+    return _possibleConstructorReturn(this, (UiTableBody.__proto__ || Object.getPrototypeOf(UiTableBody)).call(this));
+  }
+
+  _createClass(UiTableBody, [{
+    key: 'render',
+    value: function render() {
+      this.rData = [{
+        name: 'fsad',
+        result: [123, 43, 56]
+      }, {
+        name: '小i',
+        result: [223, 43, 56]
+      }, {
+        name: 'fsadsdaf',
+        result: [123, 89, 56]
+      }];
+      var sortOption = this.props.sort;
+      if (this.props.sortMethod) this.rData.sort(this.props.sortMethod);else {
+        this.rData.sort(function (p1, p2) {
+          var result = sortOption.direction ? p1.result[sortOption.col] - p2.result[sortOption.col] : -(p1.result[sortOption.col] - p2.result[sortOption.col]);
+          return result;
+        });
+      }
+      var dataRow = this.rData.map(function (rData) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'span',
+            { className: 'data-col' },
+            rData.name
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'data-col' },
+            rData.result[0]
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'data-col' },
+            rData.result[1]
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'data-col' },
+            rData.result[2]
+          )
+        );
+      });
+      return _react2.default.createElement(
+        'div',
+        null,
+        dataRow
+      );
+    }
+  }]);
+
+  return UiTableBody;
+}(_react2.default.Component);
+
+exports.default = UiTableBody;
+
+/***/ }),
+
+/***/ 191:
+/***/ (function(module, exports) {
+
+module.exports = [{"title":"姓名","data":{"data":["p1","p2","p3"],"sortable":false}},{"title":"数学","data":{"data":[100,22,44],"sortable":true}},{"title":"语文","data":{"data":[100,22,44],"sortable":true}}]
+
+/***/ }),
+
 /***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -594,7 +785,7 @@ module.exports = function (css) {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(49);
+var _react = __webpack_require__(24);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -606,6 +797,18 @@ var _main = __webpack_require__(184);
 
 var _main2 = _interopRequireDefault(_main);
 
+var _UiTableHeader = __webpack_require__(189);
+
+var _UiTableHeader2 = _interopRequireDefault(_UiTableHeader);
+
+var _UiTableBody = __webpack_require__(190);
+
+var _UiTableBody2 = _interopRequireDefault(_UiTableBody);
+
+var _data = __webpack_require__(191);
+
+var _data2 = _interopRequireDefault(_data);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -614,189 +817,59 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var Console = console;
+
 var UiSortTable = function (_React$Component) {
-    _inherits(UiSortTable, _React$Component);
+  _inherits(UiSortTable, _React$Component);
 
-    function UiSortTable() {
-        _classCallCheck(this, UiSortTable);
+  function UiSortTable(props) {
+    _classCallCheck(this, UiSortTable);
 
-        var _this = _possibleConstructorReturn(this, (UiSortTable.__proto__ || Object.getPrototypeOf(UiSortTable)).call(this));
+    var _this = _possibleConstructorReturn(this, (UiSortTable.__proto__ || Object.getPrototypeOf(UiSortTable)).call(this, props));
 
-        console.log(_this.props.data);
-        _this.state = {
-            sort: {
-                col: 0,
-                direction: true
-            },
-            headerData: []
-        };
-        return _this;
+    Console.log(_this.props.uData);
+    _this.state = {
+      sort: {
+        col: 0,
+        direction: true
+      },
+      headerData: []
+    };
+    return _this;
+  }
+
+  _createClass(UiSortTable, [{
+    key: 'sortColumn',
+    value: function sortColumn(index) {
+      this.setState({
+        sort: index
+      });
+      Console.log('Click sort');
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-    _createClass(UiSortTable, [{
-        key: 'sortColumn',
-        value: function sortColumn(index) {
-            this.setState({
-                sort: index
-            });
-            console.log("Click sort");
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(UiTableHeader, { onHeaderClick: function onHeaderClick(p) {
-                        return _this2.sortColumn(p);
-                    } }),
-                _react2.default.createElement(UiTableBody, { sort: this.state.sort })
-            );
-        }
-    }]);
-
-    return UiSortTable;
-}(_react2.default.Component);
-
-var UiTableHeader = function (_React$Component2) {
-    _inherits(UiTableHeader, _React$Component2);
-
-    function UiTableHeader(props) {
-        _classCallCheck(this, UiTableHeader);
-
-        var _this3 = _possibleConstructorReturn(this, (UiTableHeader.__proto__ || Object.getPrototypeOf(UiTableHeader)).call(this));
-
-        _this3.title = [];
-        _this3.state = {
-            sort: {
-                col: 0,
-                direction: false
-            }
-        };
-        return _this3;
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_UiTableHeader2.default, { onHeaderClick: function onHeaderClick(p) {
+            return _this2.sortColumn(p);
+          } }),
+        _react2.default.createElement(_UiTableBody2.default, { sort: this.state.sort })
+      );
     }
+  }]);
 
-    _createClass(UiTableHeader, [{
-        key: 'sortThisCol',
-        value: function sortThisCol(index) {
-            this.setState({
-                sort: {
-                    col: index,
-                    direction: !this.state.sort.direction
-                }
-            });
-            this.props.onHeaderClick(this.state.sort);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this4 = this;
-
-            var header = [];
-            this.title = ["姓名", "数学", "语文", "英语"];
-
-            var _loop = function _loop(i) {
-                var header_class = _this4.title[i] !== "姓名" ? "header can-sort" : "header";
-                header.push(_react2.default.createElement(
-                    'span',
-                    { onClick: function onClick() {
-                            return _this4.sortThisCol(i);
-                        }, className: header_class, key: i },
-                    _this4.title[i]
-                ));
-            };
-
-            for (var i = 0; i < this.title.length; i++) {
-                _loop(i);
-            }
-            return _react2.default.createElement(
-                'div',
-                { style: { marginBottom: 12 + 'px' } },
-                header
-            );
-        }
-    }]);
-
-    return UiTableHeader;
-}(_react2.default.Component);
-
-var UiTableBody = function (_React$Component3) {
-    _inherits(UiTableBody, _React$Component3);
-
-    function UiTableBody(props) {
-        _classCallCheck(this, UiTableBody);
-
-        return _possibleConstructorReturn(this, (UiTableBody.__proto__ || Object.getPrototypeOf(UiTableBody)).call(this));
-    }
-
-    _createClass(UiTableBody, [{
-        key: 'render',
-        value: function render() {
-            this.rData = [{
-                name: "fsad",
-                result: [123, 43, 56]
-            }, {
-                name: "小i",
-                result: [223, 43, 56]
-            }, {
-                name: "fsadsdaf",
-                result: [123, 89, 56]
-            }];
-
-            var sortOption = this.props.sort;
-            if (this.props.sortMethod) this.rData.sort(sortMethod);else {
-                this.rData.sort(function (p1, p2) {
-                    var result = sortOption.direction ? p1.result[sortOption.col] - p2.result[sortOption.col] : -(p1.result[sortOption.col] - p2.result[sortOption.col]);
-                    return result;
-                });
-            }
-
-            var dataRow = this.rData.map(function (rData) {
-                return _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'data-col' },
-                        rData["name"]
-                    ),
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'data-col' },
-                        rData["result"][0]
-                    ),
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'data-col' },
-                        rData["result"][1]
-                    ),
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'data-col' },
-                        rData["result"][2]
-                    )
-                );
-            });
-            return _react2.default.createElement(
-                'div',
-                null,
-                dataRow
-            );
-        }
-    }]);
-
-    return UiTableBody;
+  return UiSortTable;
 }(_react2.default.Component);
 
 function loadUiTable() {
-    fetch('data.json').then(function (res) {
-        return res.text();
-    }).then(function (t) {
-        _reactDom2.default.render(_react2.default.createElement(UiSortTable, { data: t }), document.getElementById("root"));
-    });
+  _reactDom2.default.render(_react2.default.createElement(UiSortTable, { uData: _data2.default }), document.getElementById('root'));
 }
+
+loadUiTable();
 
 /***/ })
 
