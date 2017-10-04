@@ -1,18 +1,22 @@
 [
     {
-        "姓名":{
+        "title":"姓名",
+        "data":{
             "data":["p1", "p2", "p3"],
             "sortable" : false
         }
     },
     {
-        "数学":{
+        "title":"数学",
+        "data":{
             "data":[100, 22, 44],
             "sortable" : true
         }
     },
     {
-        "语文":{
+        "title":"语文",
+        "data":
+        {
             "data":[100, 22, 44],
             "sortable" : true
         }
