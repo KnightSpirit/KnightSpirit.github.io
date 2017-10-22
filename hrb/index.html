@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+    *{
+      margin: 0;
+    }
+    #app{
+      height: 100vh;
+    }
+    body{
+      background: #e1eec3;  /* fallback for old browsers */
+      background: -webkit-repeating-linear-gradient(to left, #f05053, #e1eec3);
+      background: repeating-linear-gradient(to left, #f05053, #e1eec3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+<script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="app.bundle.js"></script></body>
+</html>
